@@ -1,0 +1,12 @@
+{
+  "name": "boutique-pro",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Boutique en ligne (catalogue JSON + panier + commande WhatsApp)",
+  "main": "server-native.js",
+  "scripts": {
+    "dev": "node --watch server-native.js",
+    "start": "node server-native.js"
+  }
+}

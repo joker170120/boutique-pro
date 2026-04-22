@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ma Boutique Gabon - Commande WhatsApp</title>
+  <meta name="description" content="Boutique en ligne au Gabon : catalogue, panier et commande WhatsApp.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#catalogue">Aller au catalogue</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="/">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span>
+          <span class="brand__name" id="shopNameDisplay">Ma Boutique Gabon</span>
+          <span class="brand__tagline">Vente en ligne · Livraison locale</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a class="nav__link" href="#catalogue">Catalogue</a>
+        <a class="nav__link" href="#commande">Commande</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="hero__eyebrow">Boutique professionnelle</p>
+      <h1 class="hero__title">Vos articles au Gabon, commande rapide sur WhatsApp</h1>
+      <p class="hero__lead">
+        Ajoutez vos produits au panier, indiquez vos coordonnees puis validez.
+        Un message WhatsApp pre-rempli est envoye au vendeur avec le detail complet de votre commande.
+      </p>
+      <ul class="trust">
+        <li class="trust__item"><span class="trust__icon">✓</span>Commande claire et tracable</li>
+        <li class="trust__item"><span class="trust__icon">✓</span>Confirmation rapide par WhatsApp</li>
+        <li class="trust__item"><span class="trust__icon">✓</span>Paiement Airtel Money / Moov Money</li>
+      </ul>
+    </div>
+  </section>
+
+  <main class="container layout">
+    <section id="catalogue" class="panel" aria-labelledby="catalogueTitle">
+      <div class="panel__head">
+        <div>
+          <h2 class="panel__title" id="catalogueTitle">Catalogue</h2>
+          <p class="panel__subtitle">Recherchez un produit par nom ou description.</p>
+        </div>
+        <div class="search">
+          <label for="search" class="visually-hidden">Rechercher un produit</label>
+          <input id="search" class="input input--search" type="search" placeholder="Ex: mercurial, sac, protege tibia">
+        </div>
+      </div>
+      <div id="products" class="product-grid" role="list" aria-live="polite"></div>
+    </section>
+
+    <aside id="commande" class="layout__aside">
+      <section class="panel panel--sticky" aria-labelledby="commandeTitle">
+        <div class="panel__head panel__head--compact">
+          <div>
+            <h2 class="panel__title" id="commandeTitle">Panier & commande</h2>
+            <p class="panel__subtitle">Finalisez votre commande en quelques etapes.</p>
+          </div>
+        </div>
+
+        <div class="cart-wrap">
+          <div id="cart" class="cart" aria-live="polite"></div>
+        </div>
+
+        <form id="orderForm" class="form">
+          <h3 class="form__title">Coordonnees</h3>
+          <p class="form__hint">Ces informations permettent au vendeur de vous recontacter.</p>
+
+          <div class="form__row">
+            <label class="field">
+              <span class="field__label">Nom complet</span>
+              <input class="input" type="text" name="name" required>
+            </label>
+            <label class="field">
+              <span class="field__label">Telephone (WhatsApp)</span>
+              <input class="input" type="tel" name="phone" placeholder="+241..." required>
+            </label>
+          </div>
+
+          <div class="form__row">
+            <label class="field">
+              <span class="field__label">Ville</span>
+              <input class="input" type="text" name="city" placeholder="Libreville, Port-Gentil..." required>
+            </label>
+            <label class="field">
+              <span class="field__label">Adresse <span class="optional">(optionnel)</span></span>
+              <input class="input" type="text" name="address">
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field__label">Notes <span class="optional">(optionnel)</span></span>
+            <textarea class="textarea" name="notes" placeholder="Precision sur la livraison, disponibilite..."></textarea>
+          </label>
+
+          <input id="itemsJson" type="hidden" name="itemsJson">
+
+          <div class="form__actions">
+            <button id="clearBtn" class="btn btn--ghost" type="button">Vider le panier</button>
+            <button id="submitBtn" class="btn btn--primary" type="submit" disabled>Valider et ouvrir WhatsApp</button>
+          </div>
+
+          <p id="status" class="status" role="status" aria-live="polite"></p>
+          <p class="form__hint" style="margin-top: 12px;">
+            Paiement apres confirmation avec le vendeur (Airtel Money ou Moov Money).
+          </p>
+        </form>
+      </section>
+    </aside>
+  </main>
+
+  <div id="productPreview" class="preview" hidden>
+    <button class="preview__overlay" type="button" data-role="preview-close" aria-label="Fermer"></button>
+    <article class="preview__dialog" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+      <button class="preview__close" type="button" data-role="preview-close" aria-label="Fermer">×</button>
+      <img id="previewImage" class="preview__image" alt="Apercu produit">
+      <h3 id="previewTitle" class="preview__title"></h3>
+      <p id="previewDescription" class="preview__description"></p>
+      <div class="preview__footer">
+        <span id="previewPrice" class="preview__price"></span>
+        <button id="previewAddBtn" class="btn btn--primary" type="button">Ajouter au panier</button>
+      </div>
+    </article>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="site-footer__text">
+        Commande en ligne pour clients au Gabon. Les details (livraison, confirmation, paiement mobile money)
+        sont finalises directement sur WhatsApp avec le vendeur.
+      </p>
+    </div>
+  </footer>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
