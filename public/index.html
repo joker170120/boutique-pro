@@ -70,29 +70,42 @@
           <div id="cart" class="cart" aria-live="polite"></div>
         </div>
 
-        <form id="orderForm" class="form">
+        <form id="orderForm" class="form" novalidate>
           <h3 class="form__title">Coordonnees</h3>
           <p class="form__hint">Ces informations permettent au vendeur de vous recontacter.</p>
 
           <div class="form__row">
             <label class="field">
               <span class="field__label">Nom complet</span>
-              <input class="input" type="text" name="name" required>
+              <input class="input" type="text" name="name">
             </label>
             <label class="field">
               <span class="field__label">Telephone (WhatsApp)</span>
-              <input class="input" type="tel" name="phone" placeholder="+241..." required>
+              <input
+                class="input"
+                type="text"
+                name="phone"
+                placeholder="Ex: +241 04 01 20 17 ou 04 01 20 17"
+                inputmode="tel"
+              >
             </label>
           </div>
 
           <div class="form__row">
             <label class="field">
               <span class="field__label">Ville</span>
-              <input class="input" type="text" name="city" placeholder="Libreville, Port-Gentil..." required>
+              <input class="input" type="text" name="city" placeholder="Libreville, Port-Gentil...">
             </label>
             <label class="field">
               <span class="field__label">Adresse <span class="optional">(optionnel)</span></span>
-              <input class="input" type="text" name="address">
+              <input
+                class="input"
+                type="text"
+                name="address"
+                inputmode="text"
+                autocomplete="street-address"
+                spellcheck="false"
+              >
             </label>
           </div>
 

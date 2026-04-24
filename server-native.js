@@ -41,7 +41,6 @@ const CURRENCY = process.env.CURRENCY || "XAF";
 
 const publicDir = path.join(__dirname, "public");
 const dataDir = path.join(__dirname, "data");
-const productsPath = path.join(dataDir, "products.json");
 const ordersPath = path.join(dataDir, "orders.jsonl");
 
 const MIME_TYPES = {
@@ -70,13 +69,6 @@ function ensureDataDir() {
   if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 }
 
-function getProducts() {
-  const raw = fs.readFileSync(productsPath, "utf8");
-  const parsed = JSON.parse(raw);
-  if (!Array.isArray(parsed)) throw new Error("products.json must be an array");
-  return parsed;
-}
-
 function sanitizeOrderPayload(payload) {
   const customer = payload?.customer || {};
   const items = Array.isArray(payload?.items) ? payload.items : [];
@@ -91,6 +83,9 @@ function sanitizeOrderPayload(payload) {
     },
     items: items.map((it) => ({
       productId: String(it?.productId || "").trim(),
+      productName: String(it?.productName || "").trim(),
+      unitPrice: Number(it?.unitPrice || 0),
+      currencySymbol: String(it?.currencySymbol || CURRENCY).trim(),
       quantity: Number(it?.quantity || 0),
       size: it?.size ? String(it.size) : ""
     })),
@@ -101,7 +96,7 @@ function sanitizeOrderPayload(payload) {
   };
 }
 
-function buildOrderText({ orderId, productsById, order }) {
+function buildOrderText({ orderId, order }) {
   const lines = [];
   lines.push(`Bonjour, je viens de passer une commande sur ${SHOP_NAME}.`);
   lines.push(`Commande ID: ${orderId}`);
@@ -119,12 +114,13 @@ function buildOrderText({ orderId, productsById, order }) {
   let total = 0;
 
   for (const it of order.items) {
-    const p = productsById.get(String(it.productId));
-    if (!p) continue;
     const qty = Number.isFinite(it.quantity) && it.quantity > 0 ? it.quantity : 1;
+    const unitPrice = Number.isFinite(it.unitPrice) ? it.unitPrice : 0;
+    const productName = it.productName || it.productId || "Article";
+    const currency = it.currencySymbol || CURRENCY;
     const sizePart = it.size ? ` (${it.size})` : "";
-    lines.push(`- ${p.name}${sizePart} x${qty} = ${p.price * qty} ${CURRENCY}`);
-    total += p.price * qty;
+    lines.push(`- ${productName}${sizePart} x${qty} = ${unitPrice * qty} ${currency}`);
+    total += unitPrice * qty;
   }
 
   lines.push("");
@@ -208,22 +204,10 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, 200, { shopName: SHOP_NAME, currency: CURRENCY });
     }
 
-    if (req.method === "GET" && pathname === "/api/products") {
-      try {
-        const products = getProducts();
-        return sendJson(res, 200, products);
-      } catch {
-        return sendJson(res, 500, { error: "Impossible de lire products.json" });
-      }
-    }
-
     if (req.method === "POST" && pathname === "/api/order") {
       const payload = await readJsonBody(req);
 
       ensureDataDir();
-      const products = getProducts();
-      const productsById = new Map(products.map((p) => [String(p.id), p]));
-
       const order = sanitizeOrderPayload(payload);
 
       if (!order.customer.name || !order.customer.phone || order.items.length === 0) {
@@ -233,7 +217,7 @@ const server = http.createServer(async (req, res) => {
       }
 
       const orderId = `ORD-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-      const text = buildOrderText({ orderId, productsById, order });
+      const text = buildOrderText({ orderId, order });
 
       const record = {
         orderId,
