@@ -1,0 +1,37 @@
+{
+  "name": "Mes sites joker170120",
+  "install": "bash .cursor/cloud-install.sh",
+  "repositoryDependencies": [
+    "github.com/joker170120/tradeplug255",
+    "github.com/joker170120/phanbusiness",
+    "github.com/joker170120/football-shop"
+  ],
+  "ports": [
+    { "name": "boutique-pro", "port": 3000 },
+    { "name": "tradeplug255", "port": 3080 },
+    { "name": "phanbusiness", "port": 3020 },
+    { "name": "football-shop", "port": 3010 }
+  ],
+  "terminals": [
+    {
+      "name": "boutique-pro",
+      "command": "npm start",
+      "description": "Boutique Shop Foot (boutique-pro) — http://localhost:3000"
+    },
+    {
+      "name": "tradeplug255",
+      "command": "cd repos/tradeplug255 && npm start",
+      "description": "TradePlug255 Tanzania — http://localhost:3080"
+    },
+    {
+      "name": "phanbusiness",
+      "command": "cd repos/phanbusiness && npm start",
+      "description": "Dashboard investissements Gabon (phanbusiness) — http://localhost:3020"
+    },
+    {
+      "name": "football-shop",
+      "command": "cd repos/football-shop && PORT=3010 npm start",
+      "description": "Football shop — http://localhost:3010"
+    }
+  ]
+}
