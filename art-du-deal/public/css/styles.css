@@ -416,6 +416,105 @@ textarea {
 }
 
 /* Elements (11 atouts du deal) */
+.elements--deep {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.element--deep {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0;
+  overflow: hidden;
+}
+
+.element__head {
+  padding: 28px 28px 0;
+  border-bottom: none;
+}
+
+.element--deep .element__num {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+
+.element--deep h3 {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 400;
+  margin: 0 0 8px;
+}
+
+.element__tagline {
+  margin: 0;
+  font-style: italic;
+  color: var(--gold-light);
+  font-size: 1rem;
+}
+
+.element__body {
+  padding: 20px 28px 28px;
+}
+
+.element__body > p {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  margin: 0 0 14px;
+}
+
+.element__body strong {
+  color: var(--text);
+}
+
+.element__box,
+.element__apply {
+  margin-top: 18px;
+  padding: 18px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.94rem;
+}
+
+.element__box {
+  background: rgba(212, 168, 83, 0.08);
+  border-left: 3px solid var(--gold);
+}
+
+.element__box strong,
+.element__apply strong {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.element__box p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.element__apply {
+  background: rgba(110, 231, 196, 0.06);
+  border-left: 3px solid var(--accent);
+}
+
+.element__apply ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-muted);
+}
+
+.element__apply li + li {
+  margin-top: 8px;
+}
+
 .elements {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
