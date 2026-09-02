@@ -4,7 +4,7 @@
   "outputDirectory": "public",
   "rewrites": [
     {
-      "source": "/((?!css(?:/|$)|js(?:/|$)|images(?:/|$)|favicon\\.ico$|robots\\.txt$).+)",
+      "source": "/((?!css(?:/|$)|js(?:/|$)|images(?:/|$)|manifest\\.json$|favicon\\.ico$|robots\\.txt$).+)",
       "destination": "/index.html"
     }
   ]
