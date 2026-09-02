@@ -10,7 +10,8 @@
     { "name": "boutique-pro", "port": 3000 },
     { "name": "tradeplug255", "port": 3080 },
     { "name": "phanbusiness", "port": 3020 },
-    { "name": "football-shop", "port": 3010 }
+    { "name": "football-shop", "port": 3010 },
+    { "name": "art-du-deal", "port": 3040 }
   ],
   "terminals": [
     {
@@ -32,6 +33,11 @@
       "name": "football-shop",
       "command": "cd repos/football-shop && PORT=3010 npm start",
       "description": "Football shop — http://localhost:3010"
+    },
+    {
+      "name": "art-du-deal",
+      "command": "cd art-du-deal && npm start",
+      "description": "L'Art du Deal — http://localhost:3040"
     }
   ]
 }
