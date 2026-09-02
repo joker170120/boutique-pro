@@ -2,303 +2,1092 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <title>L'Art du Deal — Guide PDF</title>
+    <title>L'Art du Deal — Guide complet PDF</title>
     <style>
       @page {
         size: A4;
-        margin: 18mm 16mm 20mm;
+        margin: 20mm 18mm 22mm;
       }
-      * { box-sizing: border-box; }
+
+      @page :first {
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
       body {
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 11pt;
-        line-height: 1.55;
-        color: #1a1a22;
+        font-family: "Georgia", "Times New Roman", serif;
+        font-size: 10.5pt;
+        line-height: 1.6;
+        color: #1c1c24;
         margin: 0;
         padding: 0;
+        background: #fff;
       }
+
+      /* ——— Cover ——— */
       .cover {
         page-break-after: always;
-        min-height: 250mm;
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0;
+        padding: 28mm 24mm;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         text-align: center;
-        border: 3px solid #b8923f;
-        padding: 24mm;
+        background: linear-gradient(165deg, #0f0f14 0%, #1a1a22 55%, #252530 100%);
+        color: #f5f0e6;
+        border: none;
       }
-      .cover .mark { font-size: 28pt; color: #b8923f; margin-bottom: 12mm; }
+
+      .cover .mark {
+        font-size: 36pt;
+        color: #d4a853;
+        margin-bottom: 14mm;
+        line-height: 1;
+      }
+
       .cover h1 {
-        font-size: 32pt;
+        font-family: "Georgia", serif;
+        font-size: 34pt;
         font-weight: normal;
-        margin: 0 0 8mm;
-        line-height: 1.15;
+        margin: 0 0 6mm;
+        line-height: 1.12;
+        letter-spacing: -0.02em;
       }
-      .cover h1 em { font-style: italic; color: #8a6d2f; }
-      .cover p { font-size: 12pt; color: #444; max-width: 120mm; margin: 0 auto; }
-      .cover .meta { margin-top: 20mm; font-size: 10pt; color: #666; }
-      h2 {
-        font-size: 16pt;
-        color: #8a6d2f;
+
+      .cover h1 em {
+        font-style: italic;
+        color: #d4a853;
+      }
+
+      .cover .subtitle {
+        font-size: 13pt;
+        color: #b8b0a4;
+        max-width: 130mm;
+        margin: 0 auto 10mm;
+        line-height: 1.5;
+      }
+
+      .cover .divider {
+        width: 40mm;
+        height: 2px;
+        background: #d4a853;
+        margin: 8mm auto;
+      }
+
+      .cover .toc-preview {
+        font-size: 10pt;
+        color: #8a8278;
+        line-height: 1.8;
+        margin-top: 6mm;
+      }
+
+      .cover .meta {
+        margin-top: 18mm;
+        font-size: 9pt;
+        color: #6a6460;
+        letter-spacing: 0.04em;
+      }
+
+      /* ——— Content wrapper ——— */
+      .content {
+        padding: 0;
+      }
+
+      .section-intro {
+        margin-bottom: 8mm;
+        color: #444;
+        font-size: 10.5pt;
+      }
+
+      h2.section-title {
+        font-family: "Georgia", serif;
+        font-size: 18pt;
+        font-weight: normal;
+        color: #6b5420;
         border-bottom: 2px solid #e8d9b8;
         padding-bottom: 3mm;
-        margin: 10mm 0 5mm;
+        margin: 0 0 6mm;
         page-break-after: avoid;
       }
-      h3 {
-        font-size: 12pt;
-        margin: 5mm 0 2mm;
-        page-break-after: avoid;
-      }
-      .intro { color: #444; margin-bottom: 6mm; }
-      .element {
-        margin-bottom: 5mm;
-        padding-left: 4mm;
-        border-left: 3px solid #d4a853;
-        page-break-inside: avoid;
-      }
-      .element .num {
-        font-size: 9pt;
+
+      h2.section-title .eyebrow {
+        display: block;
+        font-size: 8pt;
         font-weight: bold;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
         color: #b8923f;
-        letter-spacing: 0.08em;
+        margin-bottom: 2mm;
+        font-family: "Helvetica Neue", Arial, sans-serif;
       }
-      .element p { margin: 1mm 0 0; color: #333; }
-      .method-step {
-        margin-bottom: 5mm;
+
+      /* ——— Elements ——— */
+      .element-block {
+        margin-bottom: 10mm;
         page-break-inside: avoid;
       }
-      .method-step .letter {
+
+      .element-block + .element-block {
+        border-top: 1px solid #eee8dc;
+        padding-top: 8mm;
+      }
+
+      .element-header {
+        margin-bottom: 4mm;
+        page-break-after: avoid;
+      }
+
+      .element-num {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-size: 8pt;
+        font-weight: bold;
+        letter-spacing: 0.12em;
+        color: #b8923f;
+        margin-bottom: 1mm;
+      }
+
+      .element-header h3 {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-size: 14pt;
+        font-weight: 600;
+        margin: 0 0 2mm;
+        color: #1c1c24;
+      }
+
+      .tagline {
+        font-size: 11pt;
+        font-style: italic;
+        color: #6b5420;
+        margin: 0;
+        line-height: 1.45;
+      }
+
+      .element-body p {
+        margin: 0 0 3mm;
+        color: #333;
+      }
+
+      .element-body p:last-of-type {
+        margin-bottom: 4mm;
+      }
+
+      .box-example {
+        margin: 4mm 0;
+        padding: 4mm 5mm;
+        background: #faf6ee;
+        border: 1px solid #e8d9b8;
+        border-left: 4px solid #d4a853;
+        page-break-inside: avoid;
+      }
+
+      .box-example strong {
+        display: block;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-size: 8.5pt;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #8a6d2f;
+        margin-bottom: 2mm;
+      }
+
+      .box-example p {
+        margin: 0;
+        font-size: 10pt;
+        color: #444;
+      }
+
+      .apply-list {
+        margin: 4mm 0 0;
+        page-break-inside: avoid;
+      }
+
+      .apply-list strong {
+        display: block;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-size: 8.5pt;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1c1c24;
+        margin-bottom: 2mm;
+      }
+
+      .apply-list ul {
+        margin: 0;
+        padding-left: 5mm;
+        color: #333;
+      }
+
+      .apply-list li {
+        margin-bottom: 1.5mm;
+      }
+
+      .apply-list li:last-child {
+        margin-bottom: 0;
+      }
+
+      /* ——— Method ——— */
+      .method-block {
+        margin-bottom: 8mm;
+        page-break-inside: avoid;
+      }
+
+      .method-block h3 {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-size: 13pt;
+        font-weight: 600;
+        margin: 0 0 3mm;
+        color: #1c1c24;
+      }
+
+      .method-letter {
         display: inline-block;
-        width: 8mm;
-        height: 8mm;
-        line-height: 8mm;
+        width: 9mm;
+        height: 9mm;
+        line-height: 9mm;
         text-align: center;
         background: #f5ecd8;
         color: #8a6d2f;
         font-weight: bold;
+        font-size: 11pt;
         border-radius: 2mm;
-        margin-right: 3mm;
+        margin-right: 2mm;
+        vertical-align: middle;
       }
-      .method-step ul { margin: 2mm 0 0; padding-left: 6mm; color: #444; }
-      .tactic {
-        margin-bottom: 4mm;
+
+      .method-block p {
+        margin: 0 0 3mm;
+        color: #333;
+      }
+
+      .method-block ul {
+        margin: 2mm 0 0;
+        padding-left: 5mm;
+        color: #444;
+      }
+
+      .method-block li {
+        margin-bottom: 1.5mm;
+      }
+
+      .method-example {
+        margin-top: 3mm;
+        padding: 3mm 4mm;
+        background: #f8f8fa;
+        border: 1px solid #e0e0e8;
+        font-size: 9.5pt;
+        color: #555;
+      }
+
+      .method-example em {
+        color: #8a6d2f;
+        font-style: normal;
+        font-weight: bold;
+      }
+
+      /* ——— Tactics ——— */
+      .tactic-block {
+        margin-bottom: 7mm;
         page-break-inside: avoid;
       }
-      .tactic strong { color: #1a1a22; }
+
+      .tactic-block h3 {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-size: 12pt;
+        font-weight: 600;
+        margin: 0 0 2mm;
+        color: #1c1c24;
+      }
+
+      .tactic-block p {
+        margin: 0 0 2.5mm;
+        color: #333;
+      }
+
+      .tactic-apply {
+        font-size: 9.5pt;
+        color: #555;
+        margin-top: 2mm;
+        padding-left: 3mm;
+        border-left: 2px solid #d4a853;
+      }
+
+      /* ——— Quote & footer ——— */
       blockquote {
-        margin: 8mm 0;
+        margin: 10mm 0 8mm;
         padding: 5mm 6mm;
-        background: #faf8f3;
+        background: #faf6ee;
         border-left: 4px solid #d4a853;
         font-style: italic;
+        font-size: 11pt;
         color: #444;
         page-break-inside: avoid;
       }
+
+      blockquote p {
+        margin: 0;
+      }
+
       .footer-note {
-        margin-top: 10mm;
+        margin-top: 8mm;
         padding-top: 4mm;
         border-top: 1px solid #ddd;
-        font-size: 9pt;
-        color: #666;
+        font-size: 8.5pt;
+        color: #888;
         text-align: center;
       }
-      section { page-break-before: auto; }
-      .page-break { page-break-before: always; }
+
+      .page-break {
+        page-break-before: always;
+      }
+
+      strong {
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
+    <!-- Couverture -->
     <div class="cover">
       <div class="mark">◆</div>
       <h1>L'Art du Deal<br /><em>Maîtriser la négociation</em></h1>
-      <p>
-        Les 11 éléments du dealmaker, la méthode DEAL et les tactiques essentielles pour conclure des
-        accords gagnants.
+      <p class="subtitle">
+        Guide complet des 11 éléments du dealmaker — chapitre « Trump Cards » — avec la méthode DEAL
+        et les tactiques de terrain pour conclure des accords gagnants.
       </p>
-      <p class="meta">Guide pratique · phancommerce / Art du Deal · 2026</p>
+      <div class="divider"></div>
+      <p class="toc-preview">
+        11 éléments du deal · Méthode DEAL (4 étapes) · Tactiques de négociation
+      </p>
+      <p class="meta">Guide pratique · L'Art du Deal · 2026</p>
     </div>
 
-    <section>
-      <h2>Les 11 éléments du deal</h2>
-      <p class="intro">
-        Des règles simples et directes qui s'appliquent à la vente, l'immobilier, les partenariats et
-        tout accord qui compte.
-      </p>
+    <div class="content">
+      <!-- Section : 11 éléments -->
+      <section>
+        <h2 class="section-title">
+          <span class="eyebrow">Chapitre Trump Cards</span>
+          Les 11 éléments du deal
+        </h2>
+        <p class="section-intro">
+          Des règles simples et directes tirées de <em>The Art of the Deal</em>, illustrées par les
+          projets emblématiques de Donald Trump : Trump Tower, Atlantic City, l'hôtel Commodore, Television
+          City, la patinoire Wollman et bien d'autres. Chaque principe s'applique à la vente, l'immobilier,
+          les partenariats et tout accord qui compte.
+        </p>
 
-      <div class="element">
-        <div class="num">01 — PENSER GRAND</div>
-        <p>
-          Si vous allez réfléchir, autant viser haut. La plupart pensent petit par peur du succès — ça
-          laisse un avantage aux audacieux. Visez des projets monumentaux, pas des petits deals
-          confortables.
-        </p>
-      </div>
-      <div class="element">
-        <div class="num">02 — PROTÉGER LE RISQUE À LA BAISSE</div>
-        <p>
-          Anticipez toujours le pire. Si vous pouvez vivre avec le scénario catastrophe, le reste suivra
-          naturellement. Ne pariez pas tout sur un home run — parfois un simple suffit pour gagner la
-          partie.
-        </p>
-      </div>
-      <div class="element">
-        <div class="num">03 — MAXIMISER SES OPTIONS</div>
-        <p>
-          Gardez plusieurs balles en l'air : la plupart des deals échouent malgré les promesses initiales.
-          Prévoyez au moins une demi-douzaine de plans B avant de vous engager.
-        </p>
-      </div>
-      <div class="element">
-        <div class="num">04 — CONNAÎTRE SON MARCHÉ</div>
-        <p>
-          Cultivez l'instinct. Parlez à tout le monde — clients, chauffeurs, voisins. Les études coûteuses
-          arrivent souvent trop tard ; vos propres sondages informels valent mieux.
-        </p>
-      </div>
-      <div class="element">
-        <div class="num">05 — UTILISER SON LEVIER</div>
-        <p>
-          Négociez depuis la force. Avoir ce que l'autre veut — ou dont il a absolument besoin — change
-          tout. Ne jamais paraître désespéré de conclure : l'autre sentirait le sang.
-        </p>
-      </div>
-      <div class="element">
-        <div class="num">06 — VALORISER SON EMPLACEMENT</div>
-        <p>
-          Ce n'est pas seulement « emplacement, emplacement » — c'est le meilleur deal. Une adresse
-          moyenne peut devenir prestigieuse avec la bonne marque, l'architecture et la promotion.
-        </p>
-      </div>
-      <div class="element">
-        <div class="num">07 — FAIRE PASSER LE MESSAGE</div>
-        <p>
-          Le meilleur produit ne vaut rien si personne n'en sait rien. La presse gratuite vaut plus qu'une
-          pub payante. Un peu d'audace et d'hyperbole sincère crée l'attention — et la valeur.
-        </p>
-      </div>
+        <!-- 01 Penser grand -->
+        <article class="element-block">
+          <header class="element-header">
+            <div class="element-num">01</div>
+            <h3>Penser grand</h3>
+            <p class="tagline">« Si vous allez réfléchir, autant penser grand. »</p>
+          </header>
+          <div class="element-body">
+            <p>
+              La plupart des gens pensent petit par peur du succès, de la décision ou de la victoire.
+              Cette timidité laisse le terrain libre à ceux qui osent viser haut. Penser grand, ce n'est
+              pas être irréaliste : c'est choisir des objectifs qui méritent un effort sérieux et qui
+              mobilisent votre énergie sur une échelle qui change vraiment la donne.
+            </p>
+            <p>
+              Dans le livre, l'auteur explique qu'il ne se contentait pas de « gagner sa vie ». Il voulait
+              construire quelque chose de <strong>monumental</strong> — pas seulement des immeubles
+              classiques, mais des projets qui transforment une ville : un vaste terrain au bord de l'eau,
+              un hôtel-casino qui rapporte cinquante fois plus qu'une simple location. La concentration
+              totale sur un grand objectif mobilise plus d'énergie qu'une série de petits coups dispersés.
+            </p>
+            <p>
+              L'ambition n'est pas un luxe pour les millionnaires : c'est un filtre. Elle vous force à
+              sélectionner les opportunités qui justifient votre temps, votre capital et votre réputation.
+              Ne limitez pas votre horizon au premier deal confortable qui se présente.
+            </p>
+            <div class="box-example">
+              <strong>Exemple du livre</strong>
+              <p>
+                Passer de quartiers modestes à Manhattan, puis viser Atlantic City : un hôtel seul est
+                bien, mais un hôtel relié à un casino change complètement l'échelle du gain. Trump ne
+                s'est pas arrêté au Commodore ou au premier terrain acquis — chaque succès a nourri un
+                projet plus ambitieux. Le message : ne limitez pas votre ambition au premier deal
+                confortable.
+              </p>
+            </div>
+            <div class="apply-list">
+              <strong>À appliquer</strong>
+              <ul>
+                <li>Fixez un objectif qui vous fait un peu peur — puis découpez-le en étapes réalistes.</li>
+                <li>Demandez-vous : « Quel serait le deal idéal, pas le deal minimum ? »</li>
+                <li>La concentration totale sur un grand objectif mobilise plus d'énergie qu'une série de petits coups.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
 
-      <div class="page-break"></div>
+        <!-- 02 Protéger le risque à la baisse -->
+        <article class="element-block">
+          <header class="element-header">
+            <div class="element-num">02</div>
+            <h3>Protéger le risque à la baisse</h3>
+            <p class="tagline">« Protège le bas, le haut se gère tout seul. »</p>
+          </header>
+          <div class="element-body">
+            <p>
+              Beaucoup croient que les grands entrepreneurs sont des joueurs. En réalité, les meilleurs
+              sont <strong>conservateurs</strong> : ils entrent dans un deal en imaginant d'abord le pire
+              scénario. Si vous pouvez survivre au pire, le bon scénario devient un bonus, pas une question
+              de survie. C'est la différence entre un dealmaker et un gambler.
+            </p>
+            <p>
+              L'idée n'est pas la peur, mais la <strong>prudence calculée</strong> : ne jamais tout miser
+              sur un seul coup. Viser le home run à chaque fois, c'est aussi multiplier les échecs. Parfois
+              un simple ou un double suffit — et vous restez dans le jeu pour le prochain round. Les
+              banques et les partenaires respectent ceux qui protègent leur downside avant de rêver
+              l'upside.
+            </p>
+            <div class="box-example">
+              <strong>Exemple du livre</strong>
+              <p>
+                Pour un terrain à Atlantic City, chaque parcelle était achetée sous condition : pas
+                d'argent massif engagé tant que l'ensemble n'était pas réuni. Ensuite, plutôt que de garder
+                100 % du risque, Trump accepte 50 % des profits avec un partenaire (Holiday Inns) qui
+                rembourse l'investissement, finance la construction et garantit contre les pertes pendant
+                cinq ans. Choix simple : 100 % du risque, ou 50 % sans risque financier.
+              </p>
+            </div>
+            <div class="apply-list">
+              <strong>À appliquer</strong>
+              <ul>
+                <li>Avant chaque deal : « Quel est mon pire cas ? Puis-je le supporter ? »</li>
+                <li>Utilisez des conditions suspensives (contrat si financement, si accord client, etc.).</li>
+                <li>Partagez le risque avec un partenaire plutôt que de tout porter seul.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
 
-      <div class="element">
-        <div class="num">08 — RIPOSTER</div>
-        <p>
-          Quand on vous traite injustement, défendez-vous fermement. Combattre pour ce en quoi vous croyez
-          finit souvent par payer — même si ça déplaît en chemin.
-        </p>
-      </div>
-      <div class="element">
-        <div class="num">09 — LIVRER LA MARCHANDISE</div>
-        <p>
-          Le marketing ouvre la porte, mais sans qualité réelle vous serez démasqué. Beaucoup parlent bien
-          sans livrer — les vrais dealmakers exécutent ce qu'ils promettent.
-        </p>
-      </div>
-      <div class="element">
-        <div class="num">10 — MAÎTRISER LES COÛTS</div>
-        <p>
-          Rêver grand oui, mais transformer les rêves en réalité à coût raisonnable. Chaque franc
-          économisé compte. Livrer dans les délais et le budget crée la confiance des banques et des
-          partenaires.
-        </p>
-      </div>
-      <div class="element">
-        <div class="num">11 — S'AMUSER</div>
-        <p>
-          L'argent est un score, pas la fin en soi. Le vrai plaisir, c'est de jouer le jeu. Ne prenez pas
-          tout trop au sérieux — la vie est fragile, et le succès aussi.
-        </p>
-      </div>
-    </section>
+        <!-- 03 Maximiser ses options -->
+        <article class="element-block">
+          <header class="element-header">
+            <div class="element-num">03</div>
+            <h3>Maximiser ses options</h3>
+            <p class="tagline">« Ne t'attache jamais à un seul deal. »</p>
+          </header>
+          <div class="element-body">
+            <p>
+              La flexibilité est une forme de protection. Gardez <strong>plusieurs balles en l'air</strong>,
+              car la majorité des deals échouent — même ceux qui semblent prometteurs au départ. Et une
+              fois un accord signé, prévoyez au moins une demi-douzaine de façons de le faire fonctionner
+              si les conditions changent.
+            </p>
+            <p>
+              Tout peut dérailler : réglementation, financement, partenaire, marché. Celui qui n'a qu'un
+              plan est fragile ; celui qui a trois ou quatre plans reste debout. L'optionnalité n'est pas
+              de la faiblesse — c'est de la stratégie. Chaque alternative crédible renforce votre position
+              à la table.
+            </p>
+            <div class="box-example">
+              <strong>Exemple du livre</strong>
+              <p>
+                Si Trump Tower n'obtenait pas les autorisations voulues → tour de bureaux standard. Si pas
+                de licence de casino → revendre le terrain assemblé à un autre opérateur avec profit. Sur
+                les anciennes voies ferrées Penn Central : d'abord logements subventionnés ; quand les fonds
+                publics s'arrêtent → basculer vers un centre de conventions ; la ville finit par choisir ce
+                site après deux ans de promotion pour Television City.
+              </p>
+            </div>
+            <div class="apply-list">
+              <strong>À appliquer</strong>
+              <ul>
+                <li>Pour chaque projet, listez 3 issues possibles : plan A, B, C.</li>
+                <li>Ne signez jamais sans savoir comment sortir proprement si ça rate.</li>
+                <li>Un échec n'est pas la fin si vous avez une autre piste déjà en cours.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
 
-    <section class="page-break">
-      <h2>La méthode DEAL — 4 étapes</h2>
-      <p class="intro">Un processus reproductible du premier contact au paiement.</p>
+        <div class="page-break"></div>
 
-      <div class="method-step">
-        <h3><span class="letter">D</span> Découvrir</h3>
-        <p>
-          Cartographiez les parties, leurs intérêts, le pouvoir de décision et les contraintes.
-          Renseignez-vous avant la première réunion.
-        </p>
-        <ul>
-          <li>Qui signe vraiment ?</li>
-          <li>Quel est leur problème n°1 ?</li>
-          <li>Quelle est leur alternative si vous n'êtes pas là ?</li>
-        </ul>
-      </div>
-      <div class="method-step">
-        <h3><span class="letter">E</span> Engager</h3>
-        <p>
-          Créez la confiance. Montrez que vous comprenez leur monde. Partagez une insight ou un cas
-          similaire avant de parler prix.
-        </p>
-        <ul>
-          <li>Miroir et reformulation</li>
-          <li>Preuve sociale ciblée</li>
-          <li>Proposition de valeur en 30 secondes</li>
-        </ul>
-      </div>
-      <div class="method-step">
-        <h3><span class="letter">A</span> Arbitrer</h3>
-        <p>
-          Négociez les termes, pas seulement le chiffre. Paiement, délais, garanties, exclusivité — tout
-          est une variable d'échange.
-        </p>
-        <ul>
-          <li>Ancrage du premier chiffre</li>
-          <li>Concessions conditionnelles</li>
-          <li>Package gagnant pour les deux côtés</li>
-        </ul>
-      </div>
-      <div class="method-step">
-        <h3><span class="letter">L</span> Locker</h3>
-        <p>
-          Formalisez immédiatement. Contrat, acompte, date de démarrage. Un deal verbal se dissout dans le
-          doute.
-        </p>
-        <ul>
-          <li>Récap écrit dans l'heure</li>
-          <li>Prochaine étape datée</li>
-          <li>Célébration discrète — puis exécution</li>
-        </ul>
-      </div>
-    </section>
+        <!-- 04 Connaître son marché -->
+        <article class="element-block">
+          <header class="element-header">
+            <div class="element-num">04</div>
+            <h3>Connaître son marché</h3>
+            <p class="tagline">« L'instinct compte autant que les chiffres. »</p>
+          </header>
+          <div class="element-body">
+            <p>
+              Un QI élevé ou un diplôme prestigieux ne suffisent pas sans <strong>instinct commercial</strong>.
+              Spielberg, Iacocca, Stallone (Rocky, Rambo) : ils savaient ce que le public voulait avant
+              les études. En affaires, c'est pareil : sentir le bon produit, le bon moment, le bon client.
+              Les données confirment l'instinct — elles ne le remplacent pas.
+            </p>
+            <p>
+              Méfiez-vous des études à 100 000 € qui arrivent trop tard et sans conclusion claire. Mieux
+              vaut vos propres <strong>sondages informels</strong> : parler aux clients, aux chauffeurs,
+              aux voisins, aux vendeurs du quartier. Posez des questions jusqu'à avoir un ressenti net.
+              Le terrain bat toujours le PowerPoint.
+            </p>
+            <div class="box-example">
+              <strong>Exemple du livre</strong>
+              <p>
+                Les critiques étaient sceptiques sur Trump Tower, mais le public ciblé — clients aisés,
+                style de vie premium — est venu en masse. Les critiques d'architecture ont fini par
+                reconnaître la qualité du bâtiment. Moralité : le marché réel paie, pas les avis des
+                experts déconnectés du terrain.
+              </p>
+            </div>
+            <div class="apply-list">
+              <strong>À appliquer</strong>
+              <ul>
+                <li>Avant un lancement : 10 conversations terrain (clients, fournisseurs, concurrents).</li>
+                <li>Observez ce qui se vend vraiment, pas ce que les gens disent vouloir.</li>
+                <li>À Libreville, Douala, Dakar : le terrain bat toujours le PowerPoint.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
 
-    <section>
-      <h2>Tactiques qui fonctionnent</h2>
-      <div class="tactic">
-        <strong>L'ancrage</strong> — Le premier chiffre fixe la zone de négociation. Posez le vôtre en
-        premier, avec justification.
-      </div>
-      <div class="tactic">
-        <strong>Le silence</strong> — Après votre offre, taisez-vous. Celui qui parle en premier cède
-        souvent du terrain.
-      </div>
-      <div class="tactic">
-        <strong>La concession conditionnelle</strong> — « Je peux faire X si vous confirmez Y aujourd'hui.
-        » Chaque geste a un prix.
-      </div>
-      <div class="tactic">
-        <strong>Le faux non</strong> — « Ce n'est pas possible » teste votre détermination. Restez calme,
-        proposez une alternative.
-      </div>
-      <div class="tactic">
-        <strong>La preuve immédiate</strong> — Démo live, témoignage client, chiffre concret — remplacez
-        les adjectifs par des faits.
-      </div>
-      <div class="tactic">
-        <strong>Le follow-up 24h</strong> — Résumé + prochaine étape + une question ouverte. Simple,
-        professionnel, efficace.
-      </div>
+        <!-- 05 Utiliser son levier -->
+        <article class="element-block">
+          <header class="element-header">
+            <div class="element-num">05</div>
+            <h3>Utiliser son levier</h3>
+            <p class="tagline">« Ne montre jamais que tu as désespérément besoin du deal. »</p>
+          </header>
+          <div class="element-body">
+            <p>
+              Le pire erreur en négociation : paraître <strong>désespéré</strong>. L'autre sent le sang
+              et durcit ses conditions. Le levier, c'est avoir quelque chose que l'autre veut, dont il a
+              besoin, ou qu'il ne peut pas obtenir ailleurs facilement. Sans levier, vous négociez des
+              prix — avec levier, vous négociez des termes.
+            </p>
+            <p>
+              Parfois le levier vient de l'imagination et du sens du spectacle : créer une situation où
+              l'autre comprend qu'il a intérêt à dire oui — pas parce que vous suppliez, mais parce que
+              le contexte le pousse. Le timing, la pression publique et la crédibilité sont des formes de
+              levier aussi puissantes que l'argent.
+            </p>
+            <div class="box-example">
+              <strong>Exemple du livre</strong>
+              <p>
+                Hôtel Commodore (1974) : convaincre les propriétaires d'annoncer publiquement la fermeture
+                → pression sur la ville autour de Grand Central. Atlantic City : engins de chantier sur le
+                site quand le conseil de Holiday Inns visite, pour donner l'impression d'un projet avancé.
+                Terrain railyards Penn Central : le nommer « Television City » pour rappeler l'enjeu
+                économique de garder les chaînes TV à New York.
+              </p>
+            </div>
+            <div class="apply-list">
+              <strong>À appliquer</strong>
+              <ul>
+                <li>Identifiez ce que l'autre partie perd si elle dit non.</li>
+                <li>Préparez une alternative crédible (BATNA) — vous négociez mieux si vous pouvez partir.</li>
+                <li>Ne révélez jamais votre urgence financière ou émotionnelle.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
 
-      <blockquote>
-        « Le deal ne se fait pas quand vous parlez. Il se fait quand l'autre se projette déjà avec vous —
-        et que vous avez rendu le "non" plus difficile que le "oui". »
-      </blockquote>
+        <!-- 06 Valoriser son emplacement -->
+        <article class="element-block">
+          <header class="element-header">
+            <div class="element-num">06</div>
+            <h3>Valoriser son emplacement</h3>
+            <p class="tagline">« Ce n'est pas que l'adresse — c'est le meilleur deal. »</p>
+          </header>
+          <div class="element-body">
+            <p>
+              On dit « emplacement, emplacement, emplacement ». Vrai — mais le meilleur argent ne se fait
+              pas toujours en payant le prix le plus élevé pour la meilleure adresse. Parfois on achète
+              un site moyen à bon prix et on le <strong>transforme</strong> avec la marque, le design et
+              la promotion. Le deal prime sur l'adresse brute.
+            </p>
+            <p>
+              Même une adresse premium doit être vendue comme <strong>plus grand que la vie</strong>. Sans
+              aura, un immeuble voisin au même quartier ne vaut pas les mêmes prix. Votre « emplacement »
+              peut être physique ou digital — l'image, les avis et la présentation créent la valeur
+              perçue.
+            </p>
+            <div class="box-example">
+              <strong>Exemple du livre</strong>
+              <p>
+                Trump Plaza : acheté bon marché sur Third Avenue (adresse moyenne), revalorise avec le nom
+                Trump (crédibilité gagnée via Trump Tower) et une architecture soignée — les prix montent
+                et le quartier devient désirable. Museum Tower, à côté de Trump Tower : bon emplacement
+                mais pas la même aura → prix inférieurs.
+              </p>
+            </div>
+            <div class="apply-list">
+              <strong>À appliquer</strong>
+              <ul>
+                <li>Boutique en ligne : votre « emplacement », c'est votre image, vos avis, votre WhatsApp.</li>
+                <li>Investissez dans la présentation (photos, packaging, vitrine) même si le local est modeste.</li>
+                <li>Ne surpayez jamais une « bonne adresse » sans calculer la marge réelle.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
 
-      <p class="footer-note">
-        L'Art du Deal — Guide de négociation · Site : temporary-turbo-platinum-ijhi3fe.vercel.app
-      </p>
-    </section>
+        <div class="page-break"></div>
+
+        <!-- 07 Faire passer le message -->
+        <article class="element-block">
+          <header class="element-header">
+            <div class="element-num">07</div>
+            <h3>Faire passer le message</h3>
+            <p class="tagline">« Même le meilleur produit ne vaut rien si personne n'en sait rien. »</p>
+          </header>
+          <div class="element-body">
+            <p>
+              La presse cherche des histoires — plus elles sont <strong>audacieuses ou sensationnelles</strong>,
+              plus elles sont relayées. Une pub pleine page coûte cher et inspire la méfiance. Une colonne
+              dans un journal sérieux, c'est gratuit et souvent plus crédible. L'attention est une
+              monnaie : une fois acquise, elle se convertit en valeur.
+            </p>
+            <p>
+              Même une couverture <strong>critique</strong> peut avoir de la valeur : elle fait connaître
+              le projet. L'important, c'est l'attention. Ensuite : être honnête avec les journalistes,
+              et utiliser un peu de <strong>bravoude</strong> — jouer sur le rêve, l'hyperbole sincère
+              (« le plus grand », « le meilleur ») pour créer l'émotion. Racontez une histoire, pas une
+              fiche produit.
+            </p>
+            <div class="box-example">
+              <strong>Exemple du livre</strong>
+              <p>
+                Television City : personne ne savait que les 100 acres existaient. Annonce du « plus haut
+                bâtiment du monde » → une une du New York Times, JT de Dan Rather, chronique dans Newsweek.
+                Tous les critiques d'architecture ont donné leur avis. Résultat : notoriété massive =
+                valeur créée, même avant la première pierre.
+              </p>
+            </div>
+            <div class="apply-list">
+              <strong>À appliquer</strong>
+              <ul>
+                <li>Racontez une histoire, pas seulement une fiche produit.</li>
+                <li>Utilisez WhatsApp Status, TikTok, Facebook — la visibilité locale compte.</li>
+                <li>Osez un angle fort : « premier au Gabon », « livraison en 24h », etc. (si c'est vrai).</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- 08 Riposter -->
+        <article class="element-block">
+          <header class="element-header">
+            <div class="element-num">08</div>
+            <h3>Riposter</h3>
+            <p class="tagline">« Quand on vous attaque injustement, combattez. »</p>
+          </header>
+          <div class="element-body">
+            <p>
+              Il faut savoir être agréable — et être bon envers ceux qui le sont avec vous. Mais quand
+              quelqu'un vous traite mal, vous trompe ou profite de vous, la réponse doit être
+              <strong>ferme et rapide</strong>. Se laisser faire invite les autres à recommencer.
+            </p>
+            <p>
+              Le risque : aggraver la situation. Ce n'est pas pour tout le monde. Mais combattre pour ce
+              en quoi vous croyez finit souvent par payer à long terme. Choisissez vos batailles : ripostez
+              sur l'essentiel, pas sur chaque détail. Face aux attaques, reformulez en positif plutôt que
+              de se justifier sur la défensive.
+            </p>
+            <div class="box-example">
+              <strong>Exemple du livre</strong>
+              <p>
+                Trump Tower : la ville refuse injustement une déduction fiscale standard accordée
+                habituellement. Réaction : bataille juridique dans six tribunaux différents — coûteux, mais
+                victoire au final. Autre leçon : face aux questions hostiles des médias, reformuler en
+                positif (« New York mérite le plus beau bâtiment » plutôt que se justifier sur la défense).
+              </p>
+            </div>
+            <div class="apply-list">
+              <strong>À appliquer</strong>
+              <ul>
+                <li>Client qui ne paie pas → relance structurée, puis mise en demeure, pas silence.</li>
+                <li>Concurrent qui copie → différenciation agressive (service, garantie, vitesse).</li>
+                <li>Choisissez vos batailles : ripostez sur l'essentiel, pas sur chaque détail.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- 09 Livrer la marchandise -->
+        <article class="element-block">
+          <header class="element-header">
+            <div class="element-num">09</div>
+            <h3>Livrer la marchandise</h3>
+            <p class="tagline">« Le marketing ouvre la porte — la qualité la garde ouverte. »</p>
+          </header>
+          <div class="element-body">
+            <p>
+              Vous pouvez utiliser promotion, presse et hyperbole pour créer l'enthousiasme. Mais vous
+              ne pouvez pas <strong>tromper longtemps</strong>. Si le produit ou le service ne suit pas,
+              les clients s'en aperçoivent vite. Le marketing ouvre la porte ; la qualité la garde ouverte.
+            </p>
+            <p>
+              Beaucoup parlent bien en réunion ; peu exécutent. Les vrais dealmakers font ce qu'ils
+              promettent. Et parfois, il faut avoir le <strong>culot de demander l'extraordinaire</strong>
+              — comme un ancien président qui, après une défaite électorale, demande 5 millions $ pour sa
+              bibliothèque. Qualifié ou non, il avait le nerve de demander — et la capacité de livrer
+              derrière.
+            </p>
+            <div class="box-example">
+              <strong>Exemple du livre</strong>
+              <p>
+                Atrium Trump Tower : les plans initiaux n'incluaient pas les escalators en bronze ni la
+                cascade. Ajout de millions en coûts — mais le résultat spectaculaire justifie la promotion.
+                Trump Plaza Atlantic City : parmi les rares casinos rentables alors que 50 % des autres
+                perdaient de l'argent. La qualité visible crée la réputation qui finance le deal suivant.
+              </p>
+            </div>
+            <div class="apply-list">
+              <strong>À appliquer</strong>
+              <ul>
+                <li>Promettez moins, livrez plus — puis demandez des avis et du bouche-à-oreille.</li>
+                <li>La livraison à l'heure et la qualité constante valent plus qu'une grosse promo unique.</li>
+                <li>Osez demander le gros contrat, le gros prix — si vous pouvez livrer derrière.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <div class="page-break"></div>
+
+        <!-- 10 Maîtriser les coûts -->
+        <article class="element-block">
+          <header class="element-header">
+            <div class="element-num">10</div>
+            <h3>Maîtriser les coûts</h3>
+            <p class="tagline">« Rêver grand oui — mais à un coût raisonnable. »</p>
+          </header>
+          <div class="element-body">
+            <p>
+              On peut dépenser des millions sur le luxe quand ça crée une valeur visible (hall
+              spectaculaire, finitions premium). Mais au quotidien, la <strong>vigilance sur les
+              coûts</strong> est non négociable. Les centimes deviennent des dollars. Un entrepreneur
+              qui ne contrôle pas ses coûts ne contrôle pas son destin.
+            </p>
+            <p>
+              Les grands rêves ne servent à rien si vous ne pouvez pas les réaliser dans un budget
+              tenable. Livrer <strong>dans les délais et le budget</strong> ouvre les portes des banques
+              et des partenaires pour le deal suivant. Un projet livré à temps vaut une réputation ; un
+              projet en retard coûte double.
+            </p>
+            <div class="box-example">
+              <strong>Exemple du livre</strong>
+              <p>
+                Trump Plaza : livré dans les temps et le budget — ouverture le Memorial Day (haute
+                saison). À côté, le projet Penthouse de Guccione : 7 ans, structure rouillée à moitié
+                construite, dizaines de millions perdus. Patinoire Wollman à Central Park : la ville
+                échoue pendant 7 ans ; Trump propose de la refaire en 4 mois pour une fraction du coût.
+                Il appelle encore un entrepreneur pour contester 5 000 $ sur une facture de millions.
+              </p>
+            </div>
+            <div class="apply-list">
+              <strong>À appliquer</strong>
+              <ul>
+                <li>Chaque dépense : « Est-ce que ça rapporte plus qu'elle ne coûte ? »</li>
+                <li>Comparez 3 devis systématiquement — même pour les petits achats.</li>
+                <li>Un projet livré à temps vaut une réputation ; un projet en retard coûte double.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- 11 S'amuser -->
+        <article class="element-block">
+          <header class="element-header">
+            <div class="element-num">11</div>
+            <h3>S'amuser</h3>
+            <p class="tagline">« L'argent compte les points — le plaisir, c'est le jeu. »</p>
+          </header>
+          <div class="element-body">
+            <p>
+              La vie est fragile. Le succès aussi — tout peut changer du jour au lendemain. L'argent
+              n'a jamais été la motivation principale : c'est une façon de <strong>garder le score</strong>.
+              La vraie excitation, c'est de jouer le jeu. Choisissez des projets qui vous passionnent —
+              l'énergie se voit dans les deals.
+            </p>
+            <p>
+              Ne passez pas vos journées à regretter ce que vous auriez dû faire différemment. Et si vous
+              n'êtes plus capable de téléphoner pour économiser 10 000 €, c'est peut-être le signe qu'il
+              faut tout arrêter — car la vigilance fait partie du plaisir du jeu. Le but n'est pas seulement
+              d'être riche — c'est de construire quelque chose qui vous rend fier.
+            </p>
+            <div class="box-example">
+              <strong>Exemple du livre</strong>
+              <p>
+                « Je ne sais pas très bien résumer ce que tous ces deals ajoutent au final — sauf que je
+                me suis éclaté à les faire. » Cette phrase résume l'état d'esprit : le parcours compte
+                autant que le résultat. Célébrez les victoires, apprenez des défaites, avancez.
+              </p>
+            </div>
+            <div class="apply-list">
+              <strong>À appliquer</strong>
+              <ul>
+                <li>Choisissez des projets qui vous passionnent — l'énergie se voit dans les deals.</li>
+                <li>Célébrez les victoires, apprenez des défaites, avancez.</li>
+                <li>Le but n'est pas seulement d'être riche — c'est de construire quelque chose qui vous rend fier.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Section : Méthode DEAL -->
+      <section class="page-break">
+        <h2 class="section-title">
+          <span class="eyebrow">Framework DEAL</span>
+          La méthode en 4 étapes
+        </h2>
+        <p class="section-intro">
+          Un processus reproductible pour préparer, négocier et conclure — du premier contact au paiement.
+          Chaque étape correspond à une phase distincte du deal : vous ne sautez pas directement au prix
+          sans avoir découvert, engagé et arbitré. Appliquez cette méthode à chaque vente, partenariat
+          ou acquisition.
+        </p>
+
+        <div class="method-block">
+          <h3><span class="method-letter">D</span> Découvrir</h3>
+          <p>
+            Cartographiez les parties, leurs intérêts, le pouvoir de décision et les contraintes.
+            Renseignez-vous <em>avant</em> la première réunion — pas pendant. Comme Trump qui étudie un
+            terrain Penn Central ou un hôtel Commodore avant de faire une offre, vous devez connaître le
+            contexte mieux que votre interlocuteur.
+          </p>
+          <p>
+            Identifiez qui signe vraiment (pas seulement qui participe à la réunion), quel est leur
+            problème numéro un, et quelle est leur meilleure alternative si vous n'êtes pas là (BATNA).
+            Sans cette cartographie, vous négociez dans le brouillard.
+          </p>
+          <ul>
+            <li>Qui signe vraiment ? Qui influence sans signer ?</li>
+            <li>Quel est leur problème n°1 — pas le problème qu'ils affichent ?</li>
+            <li>Quelle est leur alternative si vous n'êtes pas là ?</li>
+            <li>Quels sont leurs délais, contraintes budgétaires et critères de succès ?</li>
+          </ul>
+          <div class="method-example">
+            <em>Exemple :</em> Avant l'achat du Commodore, Trump identifie que la ville de New York a
+            intérêt à revitaliser Grand Central — levier politique autant qu'économique.
+          </div>
+        </div>
+
+        <div class="method-block">
+          <h3><span class="method-letter">E</span> Engager</h3>
+          <p>
+            Créez la confiance avant de parler prix. Montrez que vous comprenez leur monde. Partagez une
+            insight ou un cas similaire avant de présenter votre proposition. L'engagement n'est pas du
+            small talk — c'est la preuve que vous avez fait le travail de découverte.
+          </p>
+          <p>
+            Utilisez le miroir et la reformulation pour valider ce que vous avez entendu. Apportez une
+            preuve sociale ciblée (client similaire, résultat concret) et condensez votre proposition de
+            valeur en 30 secondes. L'autre doit se projeter avec vous avant que les chiffres entrent en
+            jeu.
+          </p>
+          <ul>
+            <li>Miroir et reformulation — « Si je comprends bien… »</li>
+            <li>Preuve sociale ciblée — un cas proche de leur situation</li>
+            <li>Proposition de valeur en 30 secondes — claire, mémorable</li>
+            <li>Questions ouvertes qui révèlent les motivations profondes</li>
+          </ul>
+          <div class="method-example">
+            <em>Exemple :</em> Lors de la visite de Holiday Inns à Atlantic City, Trump met des engins de
+            chantier sur le site pour créer l'impression d'un projet en mouvement — engagement visuel avant
+            la signature.
+          </div>
+        </div>
+
+        <div class="method-block">
+          <h3><span class="method-letter">A</span> Arbitrer</h3>
+          <p>
+            Négociez les termes, pas seulement le chiffre. Paiement, délais, garanties, exclusivité,
+            pénalités — tout est une variable d'échange. Un deal n'est pas « le prix » : c'est un package
+            de conditions qui doit fonctionner pour les deux parties.
+          </p>
+          <p>
+            Ancrez le premier chiffre avec justification (coûts, valeur marché, comparables). Chaque
+            concession doit être conditionnelle : « Je peux faire X si vous confirmez Y. » Cherchez le
+            package gagnant — pas la victoire à zéro qui détruit la relation et le deal suivant.
+          </p>
+          <ul>
+            <li>Ancrage du premier chiffre — avec justification crédible</li>
+            <li>Concessions conditionnelles — chaque geste a un prix</li>
+            <li>Package gagnant pour les deux côtés — win-win ou win-lose durable</li>
+            <li>Silence stratégique après votre offre — ne cédez pas par nervosité</li>
+          </ul>
+          <div class="method-example">
+            <em>Exemple :</em> Partenariat Holiday Inns : Trump cède 50 % des profits mais élimine 100 %
+            du risque financier — arbitrage intelligent du package, pas du prix seul.
+          </div>
+        </div>
+
+        <div class="method-block">
+          <h3><span class="method-letter">L</span> Locker</h3>
+          <p>
+            Formalisez immédiatement. Contrat, acompte, date de démarrage. Un deal verbal se dissout dans
+            le doute — les « oui » oraux se transforment en « je dois encore vérifier » dans les 48 heures.
+            Le locker transforme l'intention en engagement.
+          </p>
+          <p>
+            Envoyez un récap écrit dans l'heure qui suit la réunion. Fixez la prochaine étape avec une
+            date précise. Célébrez discrètement — puis exécutez. Le deal n'est pas clos quand vous parlez :
+            il est clos quand l'argent ou la signature arrive.
+          </p>
+          <ul>
+            <li>Récap écrit dans l'heure — termes, prix, délais, prochaine étape</li>
+            <li>Prochaine étape datée — pas « on se rappelle »</li>
+            <li>Acompte ou signature — quelque chose qui engage concrètement</li>
+            <li>Célébration discrète — puis exécution immédiate</li>
+          </ul>
+          <div class="method-example">
+            <em>Exemple :</em> Trump Plaza Atlantic City ouvert le Memorial Day — date verrouillée des mois
+            avant, budget respecté, partenaires et banques confiants pour le projet suivant.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section : Tactiques -->
+      <section class="page-break">
+        <h2 class="section-title">
+          <span class="eyebrow">Terrain</span>
+          Tactiques qui fonctionnent
+        </h2>
+        <p class="section-intro">
+          Six tactiques de négociation testées sur le terrain — complémentaires aux 11 éléments et à la
+          méthode DEAL. Utilisez-les avec discernement : une tactique mal appliquée peut détruire la
+          confiance. L'objectif est toujours de rendre le « non » plus difficile que le « oui ».
+        </p>
+
+        <div class="tactic-block">
+          <h3>L'ancrage</h3>
+          <p>
+            Le premier chiffre fixe la zone de négociation psychologique. Celui qui ancre en premier
+            oriente toute la conversation vers sa référence — même si l'offre finale est bien en deçà.
+            Posez le vôtre en premier, avec une justification crédible (comparables, coûts, valeur
+            marché).
+          </p>
+          <p>
+            Trump ancre régulièrement avec des annonces spectaculaires : « le plus haut bâtiment du monde »
+            pour Television City repositionne toute la discussion sur l'ampleur du projet, pas sur le prix
+            d'achat du terrain.
+          </p>
+          <div class="tactic-apply">
+            À appliquer : avant chaque négociation de prix, préparez votre ancrage et trois justifications.
+            Ne laissez pas l'autre poser le premier chiffre si vous pouvez l'éviter.
+          </div>
+        </div>
+
+        <div class="tactic-block">
+          <h3>Le silence</h3>
+          <p>
+            Après votre offre, taisez-vous. Celui qui parle en premier cède souvent du terrain — par
+            nervosité, par désir de combler le vide, ou par peur du rejet. Le silence est une pression
+            légitime : il signale que votre offre est sérieuse et que vous n'êtes pas désespéré.
+          </p>
+          <p>
+            En réunion, comptez mentalement dix secondes après votre proposition. L'autre partie remplira
+            souvent le silence avec une contre-offre, une question (signe d'intérêt) ou une acceptation.
+          </p>
+          <div class="tactic-apply">
+            À appliquer : après chaque offre importante, fermez la bouche. Pratiquez en simulation — le
+            silence est inconfortable mais puissant.
+          </div>
+        </div>
+
+        <div class="tactic-block">
+          <h3>La concession conditionnelle</h3>
+          <p>
+            « Je peux faire X si vous confirmez Y aujourd'hui. » Chaque geste a un prix. Ne cédez jamais
+            gratuitement — chaque concession doit être échangée contre quelque chose : délai, volume,
+            paiement anticipé, exclusivité, recommandation.
+          </p>
+          <p>
+            Le partenariat Holiday Inns illustre ce principe à l'échelle macro : Trump cède la moitié des
+            profits mais obtient financement, garantie anti-perte et crédibilité d'une chaîne nationale.
+          </p>
+          <div class="tactic-apply">
+            À appliquer : listez ce que vous pouvez céder et ce que vous voulez en échange. Jamais « je
+            fais un geste » sans condition claire.
+          </div>
+        </div>
+
+        <div class="tactic-block">
+          <h3>Le faux non</h3>
+          <p>
+            « Ce n'est pas possible » ou « c'est hors budget » teste souvent votre détermination. C'est
+            rarement la position finale — c'est un filtre. Restez calme, ne paniquez pas, proposez une
+            alternative ou demandez : « Qu'est-ce qui rendrait cela possible ? »
+          </p>
+          <p>
+            Face aux refus de la ville sur Trump Tower (déduction fiscale), Trump ne capitule pas : il
+            conteste dans six tribunaux. Le « non » initial n'était pas la fin — c'était le début de la
+            négociation.
+          </p>
+          <div class="tactic-apply">
+            À appliquer : traitez le premier « non » comme une ouverture, pas une fermeture. Reformulez,
+            proposez un plan B, ou demandez les conditions du « oui ».
+          </div>
+        </div>
+
+        <div class="tactic-block">
+          <h3>La preuve immédiate</h3>
+          <p>
+            Démo live, témoignage client, chiffre concret — remplacez les adjectifs par des faits. «
+            Excellent service » ne convainc personne. « Livré en 24h, 47 clients ce mois, note 4,8/5 »
+            convainc.
+          </p>
+          <p>
+            Les engins de chantier sur le site Atlantic City, l'atrium spectaculaire de Trump Tower, la
+            patinoire Wollman refaite en 4 mois : chaque preuve visuelle ou tangible renforce la crédibilité
+            avant la signature.
+          </p>
+          <div class="tactic-apply">
+            À appliquer : préparez une preuve tangible pour chaque réunion — échantillon, cas client,
+            démo, photo avant/après. Les faits battent les promesses.
+          </div>
+        </div>
+
+        <div class="tactic-block">
+          <h3>Le follow-up 24h</h3>
+          <p>
+            Résumé + prochaine étape + une question ouverte. Simple, professionnel, efficace. Dans les
+            24 heures qui suivent une réunion, envoyez un message qui confirme ce qui a été dit, fixe la
+            prochaine action avec une date, et pose une question qui maintient la conversation active.
+          </p>
+          <p>
+            Un deal verbal se dissout dans le doute — le follow-up écrit verrouille l'intention et
+            accélère le closing. C'est la première étape du « Locker » de la méthode DEAL.
+          </p>
+          <div class="tactic-apply">
+            À appliquer : template de follow-up prêt — résumé en 3 points, prochaine étape datée, question
+            ouverte. WhatsApp ou email, dans l'heure si possible.
+          </div>
+        </div>
+
+        <blockquote>
+          <p>
+            « Le deal ne se fait pas quand vous parlez. Il se fait quand l'autre se projette déjà avec
+            vous — et que vous avez rendu le "non" plus difficile que le "oui". »
+          </p>
+        </blockquote>
+
+        <p class="footer-note">
+          L'Art du Deal — Guide de négociation · Les 11 éléments, méthode DEAL et tactiques de terrain · 2026
+        </p>
+      </section>
+    </div>
   </body>
 </html>
