@@ -415,7 +415,47 @@ textarea {
   margin: 0;
 }
 
-/* Pillars */
+/* Elements (11 atouts du deal) */
+.elements {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.element {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.element:hover {
+  border-color: rgba(212, 168, 83, 0.3);
+  transform: translateY(-2px);
+}
+
+.element__num {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.element h3 {
+  font-size: 1.15rem;
+  margin: 0 0 10px;
+}
+
+.element p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+/* Pillars (legacy) */
 .pillars {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

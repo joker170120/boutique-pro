@@ -1,6 +1,8 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "",
+  "outputDirectory": "public",
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
     {
       "source": "/((?!css(?:/|$)|js(?:/|$)|images(?:/|$)|favicon\\.ico$|robots\\.txt$).+)",
       "destination": "/index.html"
