@@ -472,7 +472,13 @@ textarea {
   color: var(--text);
 }
 
+.element--intro {
+  border-color: rgba(212, 168, 83, 0.35);
+  background: linear-gradient(180deg, rgba(212, 168, 83, 0.1) 0%, var(--bg-card) 40%);
+}
+
 .element__box,
+.element__explain,
 .element__apply {
   margin-top: 18px;
   padding: 18px 20px;
@@ -486,6 +492,7 @@ textarea {
 }
 
 .element__box strong,
+.element__explain strong,
 .element__apply strong {
   display: block;
   font-size: 0.8rem;
@@ -495,14 +502,104 @@ textarea {
   margin-bottom: 10px;
 }
 
-.element__box p {
+.element__box p,
+.element__explain p {
   margin: 0;
   color: var(--text-muted);
 }
 
+.element__explain {
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid rgba(255, 255, 255, 0.25);
+}
+
+.element__explain strong {
+  color: var(--text);
+}
+
 .element__apply {
-  background: rgba(110, 231, 196, 0.06);
+  background: rgba(110, 231, 196,.06);
   border-left: 3px solid var(--accent);
+}
+
+.element__apply strong {
+  color: var(--accent);
+}
+
+/* Résumé final */
+.section--resume {
+  background: var(--bg-elevated);
+  border-block: 1px solid var(--border);
+}
+
+.resume-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.resume-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.resume-item__num {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+
+.resume-item p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.resume-item strong {
+  color: var(--text);
+}
+
+.resume-box,
+.resume-checklist {
+  padding: 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+}
+
+.resume-box h3,
+.resume-checklist h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 0 0 14px;
+  color: var(--gold-light);
+}
+
+.resume-box p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.resume-checklist ol {
+  margin: 0;
+  padding-left: 22px;
+  color: var(--text-muted);
+}
+
+.resume-checklist li + li {
+  margin-top: 10px;
 }
 
 .element__apply ul {
@@ -519,6 +616,12 @@ textarea {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
+}
+
+.elements.elements--deep {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
 .element {
