@@ -1,0 +1,11 @@
+{
+  "name": "art-du-deal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "L'Art du Deal — maîtriser la négociation et conclure des accords gagnants",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  }
+}

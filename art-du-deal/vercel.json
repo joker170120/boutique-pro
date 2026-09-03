@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "",
+  "outputDirectory": "public",
+  "rewrites": [
+    {
+      "source": "/((?!css(?:/|$)|js(?:/|$)|images(?:/|$)|manifest\\.json$|favicon\\.ico$|robots\\.txt$).+)",
+      "destination": "/index.html"
+    }
+  ]
+}
